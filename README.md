@@ -1,4 +1,4 @@
-# MANOK KO
+# MANOK KOv00.1
 
 Clone the Repository
 Open your terminal (or Git Bash) and run:
