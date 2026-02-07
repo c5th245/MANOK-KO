@@ -7,15 +7,21 @@ public class chickenInteractable : MonoBehaviour
     private float changedDirTimer = 2f;
     private Vector3 currentDirection;
 
+    // Add a reference to the SpriteRenderer
+    private SpriteRenderer spriteRenderer;
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
-        // Only move and flip if the timer is above 5
         if (totalTimer > 5)
         {
             totalTimer -= Time.deltaTime;
             changedDirTimer -= Time.deltaTime;
 
-            // Handle direction changes
             if (changedDirTimer <= 0)
             {
                 Vector2 randomDir = Random.insideUnitCircle.normalized;
@@ -23,17 +29,16 @@ public class chickenInteractable : MonoBehaviour
                 changedDirTimer = 2f;
             }
 
-            // Apply movement
             transform.position += currentDirection * moveSpeed * Time.deltaTime;
 
-            // Handle sprite flipping based on movement direction
+            // FIX: Use flipX instead of changing the entire object's scale
             if (currentDirection.x > 0)
             {
-                transform.localScale = new Vector3(19.782f, 11.843f, 1);
+                spriteRenderer.flipX = false; 
             }
             else if (currentDirection.x < 0)
             {
-                transform.localScale = new Vector3(-19.782f, 11.843f, 1);
+                spriteRenderer.flipX = true;
             }
         }
     }
