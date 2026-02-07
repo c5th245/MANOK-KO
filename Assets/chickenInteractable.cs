@@ -2,27 +2,39 @@ using UnityEngine;
 
 public class chickenInteractable : MonoBehaviour
 {
+    // --- STEP 1: Define your variables here ---
     public float moveSpeed = 3f;
-    private float totalTimer = 30f; // Stops moving after 30 seconds
-    private float changeDirTimer = 2f;
+    private float totalTimer = 30f; 
+    private float changedDirTimer = 2f;
     private Vector3 currentDirection;
 
+    // --- STEP 2: The logic stays inside Update ---
     void Update()
     {
         if (totalTimer > 5)
         {
             totalTimer -= Time.deltaTime;
-            changeDirTimer -= Time.deltaTime;
+            changedDirTimer -= Time.deltaTime;
 
-            // Pick a new random direction every 2 seconds
-            if (changeDirTimer <= 6)
+            if (changedDirTimer <= 0)
             {
-                currentDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
-                changeDirTimer = 2f; 
+                Vector2 randomDir = Random.insideUnitCircle.normalized;
+                currentDirection = new Vector3(randomDir.x, randomDir.y, 0);
+                changedDirTimer = 2f;
             }
-
-            // Move the chicken automatically
             transform.position += currentDirection * moveSpeed * Time.deltaTime;
+
+            // 3. Rotate (Flip) the character based on direction
+if (currentDirection.x > 0)
+{
+    // Facing Right - Use your X and Y scale from the Inspector
+    transform.localScale = new Vector3(19.782f, 11.843f, 1);
+}
+else if (currentDirection.x < 0)
+{
+    // Facing Left (flipped) - Make only the X value negative
+    transform.localScale = new Vector3(-19.782f, 11.843f, 1);
+}
+            }
         }
     }
-}
