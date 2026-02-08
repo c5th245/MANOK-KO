@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/animation/Idle.anim.meta
 guid: a3a37163339efcc4fb1b8f8485c18998
+========
+guid: ef6dcaa94783e624281b2e466bb402ee
+>>>>>>>> 0351e1374f35d81aa54e9b5232244c098bfa5200:Assets/cute chicken walk_0.controller.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 7400000
+  mainObjectFileID: 9100000
   userData: 
   assetBundleName: 
   assetBundleVariant: 

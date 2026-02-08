@@ -2,8 +2,5 @@ Library/*
 Logs/*
 Temp/*
 UserSettings/*
-.plastic/plastic.changes
-Assets/Tiny World Tiles.png.meta
-Assets/animation.meta
 .plastic/plastic.wktree
-Assets/WorldTiles.prefab
+.plastic/plastic.changes
