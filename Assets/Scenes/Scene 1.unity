@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 11334910}
   - component: {fileID: 11334909}
   - component: {fileID: 11334915}
+  - component: {fileID: 11334916}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -189,24 +190,24 @@ BoxCollider2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_LayerOverridePriority: 0
+  m_LayerOverridePriority: -1
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ContactCaptureLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_CallbackLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0051498264, y: 0.009270906}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -216,7 +217,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.0001, y: 0.0001}
+  m_Size: {x: 0.16453385, y: 0.38417268}
   m_EdgeRadius: 0
 --- !u!50 &11334912
 Rigidbody2D:
@@ -229,7 +230,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
@@ -341,6 +342,65 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!66 &11334916
+CompositeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11334908}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_GeometryType: 0
+  m_GenerationType: 0
+  m_EdgeRadius: 0
+  m_ColliderPaths:
+  - m_Collider: {fileID: 11334911}
+    m_ColliderPaths:
+    - - X: 2238480
+        Y: 4001169
+      - X: -1974737
+        Y: 4001169
+      - X: -1974737
+        Y: -3632725
+      - X: 2238480
+        Y: -3632725
+  m_CompositePaths:
+    m_Paths:
+    - - {x: 0.2238187, y: -0.36327252}
+      - {x: 0.2238187, y: 0.4001169}
+      - {x: -0.1974737, y: 0.4000876}
+      - {x: -0.19744441, y: -0.36327252}
+  m_VertexDistance: 0.0005
+  m_OffsetDistance: 0.00005
+  m_UseDelaunayMesh: 0
+  m_CompositeGameObject: {fileID: 11334908}
 --- !u!1 &36979502
 GameObject:
   m_ObjectHideFlags: 0
@@ -21049,6 +21109,7 @@ GameObject:
   - component: {fileID: 1575088983}
   - component: {fileID: 1575088982}
   - component: {fileID: 1575088981}
+  - component: {fileID: 1575088986}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -21167,7 +21228,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.135
+  orthographic size: 1.265
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -21199,6 +21260,21 @@ Transform:
   - {fileID: 1938851779}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575088986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575088980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75986d70c22b3554e84bfb72e0000ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  target: {fileID: 11334914}
+  smoothSpeed: 0.5
+  offset: {x: 0, y: 0, z: -10}
 --- !u!1 &1938851778
 GameObject:
   m_ObjectHideFlags: 0
