@@ -7,7 +7,6 @@ public class chickenInteractable : MonoBehaviour
     private float changedDirTimer = 2f;
     private Vector3 currentDirection;
 
-    // Add a reference to the SpriteRenderer
     private SpriteRenderer spriteRenderer;
 
     void Start()
@@ -31,7 +30,6 @@ public class chickenInteractable : MonoBehaviour
 
             transform.position += currentDirection * moveSpeed * Time.deltaTime;
 
-            // FIX: Use flipX instead of changing the entire object's scale
             if (currentDirection.x > 0)
             {
                 spriteRenderer.flipX = false; 

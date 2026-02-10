@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     private Vector2 moveDirection;
-    private Vector2 lastDirection = Vector2.down;
-    private Rigidbody2D rb;
+    private Transform playerTransform;
     private Animator animator;
-    private bool isRunning = false;
+    private string currentState = "Idle";
 
     [SerializeField] private Button upButton;
     [SerializeField] private Button downButton;
@@ -24,8 +23,14 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        playerTransform = GetComponent<Transform>();
         animator = GetComponent<Animator>();
+
+        if (animator == null)
+        {
+            Debug.LogError("Animator not found on Player!");
+            return;
+        }
 
         if (upButton != null)
         {
@@ -65,13 +70,13 @@ public class PlayerController : MonoBehaviour
         {
             if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
                 vertical = 1f;
-
+            
             if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
                 vertical = -1f;
-
+            
             if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
                 horizontal = -1f;
-
+            
             if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
                 horizontal = 1f;
         }
@@ -83,38 +88,28 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector2(horizontal, vertical).normalized;
 
-        // Check if character is running
-        isRunning = moveDirection != Vector2.zero;
+        string newState = moveDirection.magnitude > 0.1f ? "Run" : "Idle";
 
-        // Store the last direction when moving
-        if (isRunning)
+        if (newState != currentState && animator != null)
         {
-            lastDirection = moveDirection;
+            animator.SetTrigger(newState);
+            currentState = newState;
         }
 
         if (animator != null)
         {
-            // Update animator with running state
-            animator.SetBool("isRunning", isRunning);
-
-            if (isRunning)
-            {
-                // When running, set movement direction
-                animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.y);
-            }
-            else
-            {
-                // When idle, keep last direction for proper idle pose
-                animator.SetFloat("Horizontal", lastDirection.x);
-                animator.SetFloat("Vertical", lastDirection.y);
-            }
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.y);
         }
     }
 
     private void FixedUpdate()
     {
-        rb.linearVelocity = moveDirection * moveSpeed;
+        // Move using Transform instead of Rigidbody for more direct control
+        if (playerTransform != null)
+        {
+            playerTransform.Translate(moveDirection * moveSpeed * Time.fixedDeltaTime);
+        }
     }
 
     private void AddEventTrigger(EventTrigger trigger, EventTriggerType triggerType, System.Action callback)
