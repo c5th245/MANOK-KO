@@ -3,47 +3,41 @@ using UnityEngine;
 public class chickenInteractable : MonoBehaviour
 {
     public float moveSpeed = 3f;
+    private float totalTimer = 30f;
     private float changedDirTimer = 2f;
     private Vector3 currentDirection;
 
-    
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        
-        
-        SetRandomDirection();
     }
 
     void Update()
     {
-        
-        changedDirTimer -= Time.deltaTime;
-
-        if (changedDirTimer <= 0)
+        if (totalTimer > 5)
         {
-            SetRandomDirection();
-            changedDirTimer = 2f; 
-        }
+            totalTimer -= Time.deltaTime;
+            changedDirTimer -= Time.deltaTime;
 
-        transform.position += currentDirection * moveSpeed * Time.deltaTime;
+            if (changedDirTimer <= 0)
+            {
+                Vector2 randomDir = Random.insideUnitCircle.normalized;
+                currentDirection = new Vector3(randomDir.x, randomDir.y, 0);
+                changedDirTimer = 2f;
+            }
 
-        
-        if (currentDirection.x > 0)
-        {
-            spriteRenderer.flipX = false;
+            transform.position += currentDirection * moveSpeed * Time.deltaTime;
+
+            if (currentDirection.x > 0)
+            {
+                spriteRenderer.flipX = false; 
+            }
+            else if (currentDirection.x < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
         }
-        else if (currentDirection.x < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
-    }
-    
-    void SetRandomDirection()
-    {
-        Vector2 randomDir = Random.insideUnitCircle.normalized;
-        currentDirection = new Vector3(randomDir.x, randomDir.y, 0);
     }
 }
