@@ -83,10 +83,8 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector2(horizontal, vertical).normalized;
 
-        // Check if character is running
         isRunning = moveDirection != Vector2.zero;
 
-        // Store the last direction when moving
         if (isRunning)
         {
             lastDirection = moveDirection;
@@ -94,18 +92,15 @@ public class PlayerController : MonoBehaviour
 
         if (animator != null)
         {
-            // Update animator with running state
             animator.SetBool("isRunning", isRunning);
 
             if (isRunning)
             {
-                // When running, set movement direction
                 animator.SetFloat("Horizontal", moveDirection.x);
                 animator.SetFloat("Vertical", moveDirection.y);
             }
             else
             {
-                // When idle, keep last direction for proper idle pose
                 animator.SetFloat("Horizontal", lastDirection.x);
                 animator.SetFloat("Vertical", lastDirection.y);
             }
