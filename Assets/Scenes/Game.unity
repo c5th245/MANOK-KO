@@ -168,11 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77da5747cb08c4a9a8d853e145a77a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
-  upButton: {fileID: 0}
-  downButton: {fileID: 0}
-  leftButton: {fileID: 0}
-  rightButton: {fileID: 0}
+  walkSpeed: 5
+  attackDelay: 0.3
 --- !u!61 &11334911
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -211,7 +208,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.36}
+    oldSize: {x: 0.26, y: 0.39}
     newSize: {x: 0.16, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -295,7 +292,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -1808982527863717971, guid: 292b4f4c334c0f24e8522947cb538c15, type: 3}
+  m_Sprite: {fileID: 1304176391, guid: db39feb4b85d06d4e82e1d090445944a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -314,9 +311,9 @@ Transform:
   m_GameObject: {fileID: 11334908}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.7949, y: 16.0977, z: 0}
-  m_LocalScale: {x: 2.5607, y: 1.9871, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 16.7949, y: 16.098, z: 0}
+  m_LocalScale: {x: 2.1791074, y: 1.690985, z: 0.85098124}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -336,7 +333,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
+  m_AnimatePhysics: 1
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -383,20 +380,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 11334911}
     m_ColliderPaths:
-    - - X: 2238480
-        Y: 4001169
-      - X: -1974737
-        Y: 4001169
-      - X: -1974737
-        Y: -3632725
-      - X: 2238480
-        Y: -3632725
+    - - X: 1904905
+        Y: 3404920
+      - X: -1680464
+        Y: 3404920
+      - X: -1680464
+        Y: -3091381
+      - X: 1904905
+        Y: -3091381
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.2238187, y: -0.36327252}
-      - {x: 0.2238187, y: 0.4001169}
-      - {x: -0.1974737, y: 0.4000876}
-      - {x: -0.19744441, y: -0.36327252}
+    - - {x: 0.1904612, y: -0.3091381}
+      - {x: 0.1904612, y: 0.340492}
+      - {x: -0.1680464, y: 0.3404627}
+      - {x: -0.1680171, y: -0.3091381}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -3266,7 +3263,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4606908045521496030, guid: c8860e83c1d904ae7b3fe3ec3d64c3c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -20851,7 +20848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4606908045521496030, guid: c8860e83c1d904ae7b3fe3ec3d64c3c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21032,7 +21029,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 4606908045521496030, guid: c8860e83c1d904ae7b3fe3ec3d64c3c0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21060,6 +21057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1206204528}
   - component: {fileID: 1206204529}
+  - component: {fileID: 1206204530}
   m_Layer: 0
   m_Name: chickenInteractable
   m_TagString: Untagged
@@ -21095,6 +21093,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::chickenInteractable
   moveSpeed: 3
+--- !u!212 &1206204530
+SpriteRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206204527}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_Sprite: {fileID: 6627312017703993639, guid: 84e4e09b047a9c347a046ca50a272da7, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 0.27, y: 0.32}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_SpriteSortPoint: 0
 --- !u!1 &1486922940
 GameObject:
   m_ObjectHideFlags: 0
@@ -21342,7 +21399,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1.265
+  orthographic size: 2.45
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -21387,7 +21444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
   target: {fileID: 11334914}
-  smoothSpeed: 0.5
+  smoothSpeed: 1
   offset: {x: 0, y: 0, z: -10}
 --- !u!1 &1938851778
 GameObject:

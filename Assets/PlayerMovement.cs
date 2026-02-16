@@ -1,122 +1,169 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    private Vector2 moveDirection;
-    private Vector2 lastDirection = Vector2.down;
-    private Rigidbody2D rb;
+    [SerializeField]
+    private float walkSpeed = 5f;
+
     private Animator animator;
-    private bool isRunning = false;
 
-    [SerializeField] private Button upButton;
-    [SerializeField] private Button downButton;
-    [SerializeField] private Button leftButton;
-    [SerializeField] private Button rightButton;
+    private float xAxis;
+    private float yAxis;
+    private Rigidbody2D rb2d;
+    private bool isJumpPressed;
+    private float jumpForce = 500f;
+    private int groundMask;
+    private bool isGrounded;
+    private string currentAnimaton;
+    private bool isAttackPressed;
+    private bool isAttacking;
+    private int attackType = 0; 
+    private Vector3 originalScale; 
 
-    private bool moveUp = false;
-    private bool moveDown = false;
-    private bool moveLeft = false;
-    private bool moveRight = false;
+    [SerializeField]
+    private float attackDelay = 0.3f;
 
-    private void Start()
+    const string Player_Walk = "Walk";
+    const string Player_Idle = "Idle";
+    const string Player_Run = "Run";
+    const string Player_Jump = "Jump";
+    const string Player_left_punch = "Left_Punch";
+    const string Player_Right_punch = "Right_Punch";
+    const string Player_Kick = "Kick";
+
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        groundMask = 1 << LayerMask.NameToLayer("Ground");
 
-        if (upButton != null)
+        originalScale = transform.localScale;
+
+        if (rb2d == null) Debug.LogError("Rigidbody2D not found!");
+        if (animator == null) Debug.LogError("Animator not found!");
+        else Debug.Log("Animator found: " + animator.runtimeAnimatorController.name);
+    }
+
+    
+    void Update()
+    {
+        xAxis = Input.GetAxisRaw("Horizontal");
+        yAxis = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetMouseButtonDown(0))  
         {
-            EventTrigger upTrigger = upButton.gameObject.AddComponent<EventTrigger>();
-            AddEventTrigger(upTrigger, EventTriggerType.PointerDown, () => moveUp = true);
-            AddEventTrigger(upTrigger, EventTriggerType.PointerUp, () => moveUp = false);
+            isAttackPressed = true;
+            attackType = 0; 
         }
 
-        if (downButton != null)
+        if (Input.GetMouseButtonDown(1))  
         {
-            EventTrigger downTrigger = downButton.gameObject.AddComponent<EventTrigger>();
-            AddEventTrigger(downTrigger, EventTriggerType.PointerDown, () => moveDown = true);
-            AddEventTrigger(downTrigger, EventTriggerType.PointerUp, () => moveDown = false);
+            isAttackPressed = true;
+            attackType = 1; 
         }
 
-        if (leftButton != null)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            EventTrigger leftTrigger = leftButton.gameObject.AddComponent<EventTrigger>();
-            AddEventTrigger(leftTrigger, EventTriggerType.PointerDown, () => moveLeft = true);
-            AddEventTrigger(leftTrigger, EventTriggerType.PointerUp, () => moveLeft = false);
-        }
-
-        if (rightButton != null)
-        {
-            EventTrigger rightTrigger = rightButton.gameObject.AddComponent<EventTrigger>();
-            AddEventTrigger(rightTrigger, EventTriggerType.PointerDown, () => moveRight = true);
-            AddEventTrigger(rightTrigger, EventTriggerType.PointerUp, () => moveRight = false);
+            isAttackPressed = true;
+            attackType = 2; 
         }
     }
 
-    private void Update()
+    
+    private void FixedUpdate()
     {
-        float horizontal = 0f;
-        float vertical = 0f;
 
-        if (Keyboard.current != null)
+        
+
+        Vector2 vel = new Vector2(0, 0);
+
+        if (xAxis < 0)
         {
-            if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)
-                vertical = 1f;
-
-            if (Keyboard.current.sKey.isPressed || Keyboard.current.downArrowKey.isPressed)
-                vertical = -1f;
-
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
-                horizontal = -1f;
-
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
-                horizontal = 1f;
+            vel.x = -walkSpeed;
+            transform.localScale = new Vector3(-Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+        else if (xAxis > 0)
+        {
+            vel.x = walkSpeed;
+            transform.localScale = new Vector3(Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+        }
+        else
+        {
+            vel.x = 0;
         }
 
-        if (moveLeft) horizontal = -1f;
-        if (moveRight) horizontal = 1f;
-        if (moveUp) vertical = 1f;
-        if (moveDown) vertical = -1f;
-
-        moveDirection = new Vector2(horizontal, vertical).normalized;
-
-        isRunning = moveDirection != Vector2.zero;
-
-        if (isRunning)
+        if (yAxis < 0)
         {
-            lastDirection = moveDirection;
+            vel.y = -walkSpeed;
+        }
+        else if (yAxis > 0)
+        {
+            vel.y = walkSpeed;
+        }
+        else
+        {
+            vel.y = 0;
         }
 
-        if (animator != null)
+        if (!isAttacking)
         {
-            animator.SetBool("isRunning", isRunning);
-
-            if (isRunning)
+            if (xAxis != 0 || yAxis != 0)
             {
-                animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.y);
+                ChangeAnimationState(Player_Run);
             }
             else
             {
-                animator.SetFloat("Horizontal", lastDirection.x);
-                animator.SetFloat("Vertical", lastDirection.y);
+                ChangeAnimationState(Player_Idle);
+            }
+        }
+
+        rb2d.linearVelocity = vel;
+
+        if (isAttackPressed)
+        {
+            isAttackPressed = false;
+
+            if (!isAttacking)
+            {
+                isAttacking = true;
+
+                if (attackType == 0)
+                {
+                    ChangeAnimationState(Player_left_punch);
+                }
+                else if (attackType == 1)
+                {
+                    ChangeAnimationState(Player_Right_punch);
+                }
+                else if (attackType == 2)
+                {
+                    ChangeAnimationState(Player_Kick);
+                }
+
+                Invoke(nameof(AttackComplete), attackDelay);
             }
         }
     }
 
-    private void FixedUpdate()
+    void AttackComplete()
     {
-        rb.linearVelocity = moveDirection * moveSpeed;
+        isAttacking = false;
     }
 
-    private void AddEventTrigger(EventTrigger trigger, EventTriggerType triggerType, System.Action callback)
+ 
+    void ChangeAnimationState(string newAnimation)
     {
-        EventTrigger.Entry entry = new EventTrigger.Entry();
-        entry.eventID = triggerType;
-        entry.callback.AddListener((data) => callback());
-        trigger.triggers.Add(entry);
+        if (currentAnimaton == newAnimation)
+        {
+            Debug.Log("Already playing: " + newAnimation + " - skipping");
+            return;
+        }
+
+        Debug.Log("Changed animation from '" + currentAnimaton + "' to '" + newAnimation + "'");
+        animator.CrossFade(newAnimation, 0f, 0);
+        currentAnimaton = newAnimation;
     }
 }
