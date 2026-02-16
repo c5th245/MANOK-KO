@@ -3,16 +3,36 @@
   "WorkspaceRootPath": "S:\\project\\MANOK-KO\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\main character\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\main character\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|s:\\project\\manok-ko\\assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\playermovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\atk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\atk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\main character\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\main character\\playerhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\main character\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\main character\\healthbar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\enemyhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\player_combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\player_combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\animation\\lead-jab\\enemy_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\animation\\lead-jab\\enemy_health.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\atk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|solutionrelative:assets\\atk.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{94D4F5BE-0A0C-6253-ED79-0CE80304B2EF}|Assembly-CSharp.csproj|S:\\project\\MANOK-KO\\assets\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +62,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "HealthBar.cs",
+              "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\HealthBar.cs",
+              "RelativeDocumentMoniker": "Assets\\animation\\Main character\\HealthBar.cs",
+              "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\HealthBar.cs",
+              "RelativeToolTip": "Assets\\animation\\Main character\\HealthBar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T01:56:41.82Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnemyHealth.cs",
+              "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\EnemyHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\animation\\EnemyHealth.cs",
+              "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\EnemyHealth.cs",
+              "RelativeToolTip": "Assets\\animation\\EnemyHealth.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAkwDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T01:50:55.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerHealth.cs",
+              "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\PlayerHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\animation\\Main character\\PlayerHealth.cs",
+              "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\PlayerHealth.cs",
+              "RelativeToolTip": "Assets\\animation\\Main character\\PlayerHealth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T01:42:43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\animation\\Main character\\EnemyAI.cs",
+              "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\Main character\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\animation\\Main character\\EnemyAI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T01:32:09.066Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Enemy_Health.cs",
+              "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\lead-jab\\Enemy_Health.cs",
+              "RelativeDocumentMoniker": "Assets\\animation\\lead-jab\\Enemy_Health.cs",
+              "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\lead-jab\\Enemy_Health.cs",
+              "RelativeToolTip": "Assets\\animation\\lead-jab\\Enemy_Health.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T01:08:13.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Atk.cs",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\Atk.cs",
               "RelativeDocumentMoniker": "Assets\\Atk.cs",
@@ -50,37 +131,36 @@
               "RelativeToolTip": "Assets\\Atk.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T18:50:15.401Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-15T18:50:15.401Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "PlayerMovement.cs",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\PlayerMovement.cs",
               "RelativeDocumentMoniker": "Assets\\PlayerMovement.cs",
               "ToolTip": "S:\\project\\MANOK-KO\\Assets\\PlayerMovement.cs",
               "RelativeToolTip": "Assets\\PlayerMovement.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwCQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-15T18:36:44.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Player_Combat.cs",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\animation\\Player_Combat.cs",
               "RelativeDocumentMoniker": "Assets\\animation\\Player_Combat.cs",
               "ToolTip": "S:\\project\\MANOK-KO\\Assets\\animation\\Player_Combat.cs",
               "RelativeToolTip": "Assets\\animation\\Player_Combat.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-15T17:23:54.104Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "camerafollow.cs",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\camerafollow.cs",
               "RelativeDocumentMoniker": "Assets\\camerafollow.cs",
@@ -92,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "chickenInteractable.cs",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Assets\\chickenInteractable.cs",
               "RelativeDocumentMoniker": "Assets\\chickenInteractable.cs",
@@ -104,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "Unity.2D.Animation.Editor.asmdef",
               "DocumentMoniker": "S:\\project\\MANOK-KO\\Library\\PackageCache\\com.unity.2d.animation@3c53dae92956\\Editor\\Unity.2D.Animation.Editor.asmdef",
               "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.2d.animation@3c53dae92956\\Editor\\Unity.2D.Animation.Editor.asmdef",

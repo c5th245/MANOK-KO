@@ -20,11 +20,26 @@ public class PlayerScript : MonoBehaviour
     private string currentAnimaton;
     private bool isAttackPressed;
     private bool isAttacking;
-    private int attackType = 0; 
-    private Vector3 originalScale; 
+    private int attackType = 0;
+    private Vector3 originalScale;
 
     [SerializeField]
     private float attackDelay = 0.3f;
+
+    [SerializeField]
+    private float punchDamage = 10f;
+
+    [SerializeField]
+    private float kickDamage = 15f;
+
+    [SerializeField]
+    private float attackRange = 1f;
+
+    [SerializeField]
+    private Transform attackPoint;
+
+    [SerializeField]
+    private LayerMask enemyLayers;
 
     const string Player_Walk = "Walk";
     const string Player_Idle = "Idle";
@@ -47,36 +62,34 @@ public class PlayerScript : MonoBehaviour
         else Debug.Log("Animator found: " + animator.runtimeAnimatorController.name);
     }
 
-    
     void Update()
     {
         xAxis = Input.GetAxisRaw("Horizontal");
         yAxis = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetMouseButtonDown(0))  
+        if (Input.GetMouseButtonDown(0))
         {
             isAttackPressed = true;
-            attackType = 0; 
+            attackType = 0;
         }
 
-        if (Input.GetMouseButtonDown(1))  
+ 
+        if (Input.GetMouseButtonDown(1))
         {
             isAttackPressed = true;
-            attackType = 1; 
+            attackType = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isAttackPressed = true;
-            attackType = 2; 
+            attackType = 2;
         }
     }
 
-    
     private void FixedUpdate()
     {
 
-        
 
         Vector2 vel = new Vector2(0, 0);
 
@@ -130,18 +143,25 @@ public class PlayerScript : MonoBehaviour
             {
                 isAttacking = true;
 
+                float damage = 0;
+
                 if (attackType == 0)
                 {
                     ChangeAnimationState(Player_left_punch);
+                    damage = punchDamage;
                 }
                 else if (attackType == 1)
                 {
                     ChangeAnimationState(Player_Right_punch);
+                    damage = punchDamage;
                 }
                 else if (attackType == 2)
                 {
                     ChangeAnimationState(Player_Kick);
+                    damage = kickDamage;
                 }
+
+                DealDamageToEnemies(damage);
 
                 Invoke(nameof(AttackComplete), attackDelay);
             }
@@ -153,7 +173,22 @@ public class PlayerScript : MonoBehaviour
         isAttacking = false;
     }
 
- 
+    void DealDamageToEnemies(float damage)
+    {
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("Hit enemy: " + enemy.name + " for " + damage + " damage!");
+
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+            }
+        }
+    }
+
     void ChangeAnimationState(string newAnimation)
     {
         if (currentAnimaton == newAnimation)
@@ -165,5 +200,14 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("Changed animation from '" + currentAnimaton + "' to '" + newAnimation + "'");
         animator.CrossFade(newAnimation, 0f, 0);
         currentAnimaton = newAnimation;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
